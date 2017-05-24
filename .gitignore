@@ -1,6 +1,4 @@
 .vscode
-*.js
-*.js.map
 node_modules
 demo/**/*.js
 demo/hooks
@@ -10,5 +8,4 @@ demo/node_modules/
 demo/*d.ts
 demo/tsconfig.json
 *.log
-*.d.ts
 !index.d.ts

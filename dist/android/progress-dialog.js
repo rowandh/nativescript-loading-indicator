@@ -13,11 +13,15 @@ var LoadingIndicator = (function () {
                 // Create
                 var indeterminate = true;
                 var cancelable = false;
+                var cancelListener = null;
                 if (options.android) {
                     if (options.android.indeterminate !== undefined)
                         indeterminate = options.android.indeterminate;
                     if (options.android.cancelable !== undefined)
                         cancelable = options.android.cancelable;
+                    if (options.android.cancelListener && typeof options.android.cancelListener === 'function') {
+                        cancelListener = this.createOnCancelListener(options.android.cancelListener);
+                    }
                 }
                 this._progressDialog = android.app.ProgressDialog.show(context, "", options.message || "Loading", indeterminate, cancelable);
             }
@@ -41,10 +45,18 @@ var LoadingIndicator = (function () {
                         this._progressDialog.setProgressStyle(options.android.progressStyle);
                     if (options.android.secondaryProgress)
                         this._progressDialog.setSecondaryProgress(options.android.secondaryProgress);
+                    if (options.android.cancelListener && typeof options.android.cancelListener === 'function') {
+                        this._progressDialog.setOnCancelListener(this.createOnCancelListener(options.android.cancelListener));
+                    }
                 }
             }
             return this._progressDialog;
         }
+    };
+    LoadingIndicator.prototype.createOnCancelListener = function (cancelListener) {
+        return new android.content.DialogInterface.OnCancelListener({
+            onCancel: function (dialog) { return cancelListener(dialog); }
+        });
     };
     LoadingIndicator.prototype.hide = function () {
         if (typeof this._progressDialog !== 'undefined') {

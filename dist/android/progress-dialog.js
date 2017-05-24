@@ -23,7 +23,7 @@ var LoadingIndicator = (function () {
                         cancelListener = this.createOnCancelListener(options.android.cancelListener);
                     }
                 }
-                this._progressDialog = android.app.ProgressDialog.show(context, "", options.message || "Loading", indeterminate, cancelable);
+                this._progressDialog = android.app.ProgressDialog.show(context, "", options.message || "Loading", indeterminate, cancelable, cancelListener);
             }
             else if (this._progressDialog) {
                 // options

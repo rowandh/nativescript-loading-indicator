@@ -2,12 +2,12 @@
  * Interfaces
  */
 
-export * from './src/interfaces';
+export * from './interfaces';
 
 /**
  * LoadingIndicator
  * Uses: https://github.com/jdg/MBProgressHUD
  */
 
-export * from './src/ios/mbprogress-hud';
+export * from './ios/mbprogress-hud';
 

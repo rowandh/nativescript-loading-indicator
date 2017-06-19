@@ -41,10 +41,13 @@
     "setup": "npm i; cd demo; npm install; cd ..; npm run build; cd demo; tns plugin add ..; cd .."
   },
   "devDependencies": {
-    "tns-platform-declarations": "^2.5.2",
-    "typescript": "~2.1.0"
+    "tns-platform-declarations": "^3.0.0 || ^3.0.0-rc.1",
+    "typescript": "^2.2.0"
+  },
+  "peerDependencies": {
+    "tns-core-modules": "^3.0.0 || ^3.0.0-rc.1"
   },
   "dependencies": {
-    "tns-core-modules": "^2.5.2"
+    "tns-core-modules": "^3.0.1"
   }
 }
